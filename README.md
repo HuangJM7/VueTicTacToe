@@ -1,4 +1,6 @@
-# vuecli
+# VueTicTacToe  井字棋
+GitHub-page预览
+https://huangjm7.github.io/VueTicTacToe/dist/index.html
 
 ## Project setup
 ```
