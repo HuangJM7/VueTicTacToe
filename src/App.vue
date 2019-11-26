@@ -1,29 +1,28 @@
 <template>
   <div id="app">
-    <div>第{{n}}手</div>
+    <div>第{{ n }}手</div>
     <div class="chest">
-      <div class="row">
-        <Cell @click="onClickCell(0,$event)" :n="n" />
-        <Cell @click="onClickCell(1,$event)" :n="n" />
-        <Cell @click="onClickCell(2,$event)" :n="n" />
-      </div>
-      <div class="row">
-        <Cell @click="onClickCell(3,$event)" :n="n" />
-        <Cell @click="onClickCell(4,$event)" :n="n" />
-        <Cell @click="onClickCell(5,$event)" :n="n" />
-      </div>
-      <div class="row">
-        <Cell @click="onClickCell(6,$event)" :n="n" />
-        <Cell @click="onClickCell(7,$event)" :n="n" />
-        <Cell @click="onClickCell(8,$event)" :n="n" />
-      </div>
+      <Cell @click="onClickCell(0, $event)" :n="n" />
+      <Cell @click="onClickCell(1, $event)" :n="n" />
+      <Cell @click="onClickCell(2, $event)" :n="n" />
+
+      <Cell @click="onClickCell(3, $event)" :n="n" />
+      <Cell @click="onClickCell(4, $event)" :n="n" />
+      <Cell @click="onClickCell(5, $event)" :n="n" />
+
+      <Cell @click="onClickCell(6, $event)" :n="n" />
+      <Cell @click="onClickCell(7, $event)" :n="n" />
+      <Cell @click="onClickCell(8, $event)" :n="n" />
     </div>
-    <div>{{ result===false ? "胜负未分" : `${result}胜`}}</div>
+    <div>{{ result === false ? "胜负未分" : `${result}胜` }}</div>
+    <br>
+    <button @click="restrat()">再来一局</button>
   </div>
 </template>
 
 <script>
 import Cell from "./Cell.vue";
+import { log } from "util";
 
 export default {
   name: "app",
@@ -77,6 +76,13 @@ export default {
       ) {
         this.result = map[0][2];
       }
+    },
+    restrat() {
+      this.n = 0;
+      this.map = [[null, null, null], [null, null, null], [null, null, null]];
+      this.$children.forEach(item => {
+        (item.a = false), (item.text = "");
+      });
     }
   }
 };
@@ -87,8 +93,16 @@ export default {
   display: grid;
   justify-content: center;
   justify-items: center;
+  margin: 20px;
 }
-.row {
-  display: flex;
+.chest {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin: 20px;
+  min-width: 300px;
+  min-height: 300px;
+  width: 40vh;
+  height: 40vh;
 }
 </style>

@@ -28,8 +28,8 @@ export default {
 <style>
 .cell {
   border: 1px solid black;
-  width: 100px;
-  height: 100px;
+  min-width: 100px;
+  min-height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
